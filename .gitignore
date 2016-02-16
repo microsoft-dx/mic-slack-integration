@@ -235,3 +235,4 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 src/SlackIntegration.API/appSettings.config
+src/SlackIntegration.API/Scripts/
