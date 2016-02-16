@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Infrastructure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SlackIntegration.Hubs;
@@ -10,13 +11,14 @@ namespace SlackIntegration.Controllers
 {
     public class SlackController : ApiController
     {
-        private SlackClient SlackClient = new SlackClient(ConfigurationManager.AppSettings["SlackWebHookUri"]);
+        public ISlackClient SlackClient { get; set; }
+        public IConnectionManager ConnectionManager {get;set;}
 
         [HttpPost]
         public void PostMessageToSlack(SlackMessage message)
         {
             SlackClient.PostMessage(message);
-            GlobalHost.ConnectionManager.GetHubContext<SlackHub>().Clients.All.addMessage(message.UserName, message.Text);
+            ConnectionManager.GetHubContext<SlackHub>().Clients.All.addMessage(message.UserName, message.Text);
         }
 
         [HttpPost]
@@ -26,7 +28,7 @@ namespace SlackIntegration.Controllers
 
             if(command.Token == ConfigurationManager.AppSettings["SlackCommandToken"])
             {
-                GlobalHost.ConnectionManager.GetHubContext<SlackHub>().Clients.All.addMessage(command.UserName, command.Text);
+                ConnectionManager.GetHubContext<SlackHub>().Clients.All.addMessage(command.UserName, command.Text);
                 SlackClient.PostMessage(text: command.Text, userName: command.UserName);
             }
 
