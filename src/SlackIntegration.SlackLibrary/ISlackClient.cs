@@ -7,6 +7,6 @@ namespace SlackIntegration.SlackLibrary
         Uri Uri { get; }
 
         void PostMessage(string text, string userName = null, string channel = null);
-        void PostMessage(Message message);
+        void PostMessage(SlackMessage message);
     }
 }

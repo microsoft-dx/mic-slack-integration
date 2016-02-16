@@ -16,7 +16,7 @@ namespace SlackIntegration.SlackLibrary
 
         public void PostMessage(string text, string userName = null, string channel = null)
         {
-            Message message = new Message()
+            SlackMessage message = new SlackMessage()
             {
                 Channel = channel,
                 UserName = userName,
@@ -26,7 +26,7 @@ namespace SlackIntegration.SlackLibrary
             PostMessage(message);
         }
 
-        public void PostMessage(Message message)
+        public void PostMessage(SlackMessage message)
         {
             string jsonMessage = JsonConvert.SerializeObject(message);
 
