@@ -45,9 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ISlackClient.cs" />
-    <Compile Include="Message.cs" />
+    <Compile Include="SlackMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SlackClient.cs" />
+    <Compile Include="SlackCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -2,15 +2,15 @@
 
 namespace SlackIntegration.SlackLibrary
 {
-    public class Message
+    public class SlackMessage
     {
-        [JsonProperty("channel")]
+        [JsonProperty(PropertyName = "channel")]
         public string Channel { get; set; }
 
-        [JsonProperty("username")]
+        [JsonProperty(PropertyName = "username")]
         public string UserName { get; set; }
 
-        [JsonProperty("text")]
+        [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
     }
 }
