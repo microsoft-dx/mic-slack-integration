@@ -24,8 +24,12 @@ namespace SlackIntegration.Controllers
         {
             var command = JsonConvert.DeserializeObject<SlackCommand>(commandRequest.ToString());
 
-            GlobalHost.ConnectionManager.GetHubContext<SlackHub>().Clients.All.addMessage(command.UserName, command.Text);
-            SlackClient.PostMessage(text: command.Text, userName: command.UserName);
+            if(command.Token == ConfigurationManager.AppSettings["SlackCommandToken"])
+            {
+                GlobalHost.ConnectionManager.GetHubContext<SlackHub>().Clients.All.addMessage(command.UserName, command.Text);
+                SlackClient.PostMessage(text: command.Text, userName: command.UserName);
+            }
+
         }
     }
 }
