@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using SlackIntegration.DAL;
 using SlackIntegration.Hubs;
 using SlackIntegration.SlackLibrary;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Http;
 
@@ -35,6 +36,12 @@ namespace SlackIntegration.Controllers
                 SlackMessageStore.SaveMessage(text: command.Text, userName: command.UserName);
             }
 
+        }
+        
+        [HttpGet]
+        public List<SlackMessage> GetMessages(int messagesCount)
+        {
+            return SlackMessageStore.GetLastMessages(messagesCount);
         }
     }
 }
