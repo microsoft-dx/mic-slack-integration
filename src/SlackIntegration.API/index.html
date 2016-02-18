@@ -19,6 +19,24 @@
 
     <script type="text/javascript">
 
+        $.ajax({
+            url: '/api/Slack/GetMessages',
+            method: 'get',
+            data: { messagesCount: 30 },
+            contentType: 'json',
+            success: addMessages
+        });
+
+        function addMessages(messageList) {
+            for (var index = messageList.length - 1; index => 0; index--) {
+                var message = messageList[index];
+                $("#messageList").append('<li>' + '<b>' + message.username + '</b>:' + message.text + '</li>');
+
+            }
+        }
+
+        
+
         var hub = $.connection.slackHub;
 
         hub.client.addMessage = function (userName, message) {
