@@ -236,3 +236,4 @@ _Pvt_Extensions
 .fake/
 src/SlackIntegration.API/appSettings.config
 src/SlackIntegration.API/Scripts/
+src/SlackIntegration.API/connectionStrings.config
