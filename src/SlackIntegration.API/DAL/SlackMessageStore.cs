@@ -13,7 +13,7 @@ namespace SlackIntegration.DAL
         {
             message.TimeStamp = DateTime.Now;
             DbContext.Messages.Add(message);
-            DbContext.SaveChangesAsync();
+            DbContext.SaveChanges();
         }
 
         public void SaveMessage(string text, string userName = null, string channel = null)
