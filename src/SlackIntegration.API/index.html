@@ -28,7 +28,7 @@
         $("#sendMessageButton").click(function () {
 
             var payload = {
-                UserName: $("#userNameInput").val(),
+                UserName: $("#userNameInput").val() || "Guest",
                 Text: $("#messageInput").val()
             };
             $.ajax({
