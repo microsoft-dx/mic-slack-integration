@@ -10,5 +10,6 @@ namespace SlackIntegration.DAL
         void SaveMessage(SlackMessage message);
         void SaveMessage(string text, string userName = null, string channel = null);
         List<SlackMessage> GetMessages();
+        List<SlackMessage> GetLastMessages(int messagesCount);
     }
 }

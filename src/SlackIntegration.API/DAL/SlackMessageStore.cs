@@ -33,5 +33,10 @@ namespace SlackIntegration.DAL
         {
             return DbContext.Messages.ToList();
         }
+
+        public List<SlackMessage> GetLastMessages(int messagesCount)
+        {
+            return DbContext.Messages.OrderByDescending(m => m.Id).Take(messagesCount).ToList();
+        }
     }
 }
