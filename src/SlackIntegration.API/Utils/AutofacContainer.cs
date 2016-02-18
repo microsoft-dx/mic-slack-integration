@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Integration.SignalR;
 using Autofac.Integration.WebApi;
+using SlackIntegration.DAL;
 using SlackIntegration.SlackLibrary;
 using System.Configuration;
 using System.Reflection;
@@ -23,6 +24,15 @@ namespace SlackIntegration.Utils
                 .As<ISlackClient>()
                 .PropertiesAutowired()
                 .WithParameter("uriString", ConfigurationManager.AppSettings["SlackWebHookUri"]);
+
+            builder.RegisterType<SlackDbContext>()
+                .WithParameter("connectionString", ConfigurationManager.ConnectionStrings["SlackDbConnectionString"].ConnectionString)
+                .InstancePerRequest();
+
+           builder.RegisterType<SlackMessageStore>()
+                .As<ISlackMessageStore>()
+                .PropertiesAutowired()
+                .InstancePerRequest();
 
             builder.RegisterHubs(Assembly.GetExecutingAssembly())
                 .PropertiesAutowired();
