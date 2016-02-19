@@ -63,6 +63,31 @@ The `PostMessage`method from `SlackClient` basically does an HTTP Post to the `U
 
 The `SlackMessageStore` has the message store functionality that stores the messages in an Azure SQL Database.
 
+###Building the project
+
+In order to build the project, you need to add two `.config` files in the root of the API project:
+
+- `appSettings.config`
+
+    ```<?xml version="1.0" encoding="utf-8" ?> 
+      <appSettings> 
+        <add key="SlackWebHookUri" value={web_hook_uri}/>
+        <add key="SlackCommandToken" value={command_token}/>
+      </appSettings>```
+
+- `connectionStrings.config`
+
+`<?xml version="1.0" encoding="utf-8" ?> 
+<connectionStrings> 
+  <add name="SlackDbConnectionString" connectionString = {connection_string} />
+</connectionStrings>
+`
+
+If you don't need it, you can exclude the message store and the SQL Database, but you must remove the dependencies for `SlackMessageStore` and for `SlackDbContext`, and the not register `SlackDbContext` with the builder. 
+
+`            builder.RegisterType<SlackDbContext>()
+                .WithParameter("connectionString", ConfigurationManager.ConnectionStrings["SlackDbConnectionString"].ConnectionString)
+                .InstancePerRequest();`
 
 
 ###Next steps
