@@ -1,9 +1,9 @@
 
 # Microsoft Innovation Center Slack Integration
-###Slack Integration for the Microsoft Innovation Center Team using **Asp.Net WebApi**, **SignalR**, **Autofac** and **Azure SQL**
+### Slack Integration for the Microsoft Innovation Center Team using **Asp.Net WebApi**, **SignalR**, **Autofac** and **Azure SQL**
 
 
-###Introduction
+### Introduction
 Purpose of the project
 
 - people that are not members of our Slack team to be able to post messages in a dedicated channel
@@ -11,7 +11,7 @@ Purpose of the project
 - team members to be able to reply to messages using a **[slash command](https://api.slack.com/slash-commands)**
 
 
-###Implementation
+### Implementation
 
 We broke down the project in two parts:
 
@@ -23,7 +23,7 @@ We broke down the project in two parts:
 ![mic-slack-integration-architecture](https://kmnhpa.bn.files.1drv.com/y4mN0IuCjJuF_jGvI6HJdQYneb8N34UfGjvfY-x0Frw1gPg3ho70Gl1iNxb_K5bOFQiqQ7ZidJak2TXuXh7vUR1PfmAX-UgDd21ylcrC2-sQVr15QL1UJa-ZBUzaCjohm-nFj6tPIlDZ3kR_cEOT5R426AW5_6pKrh4_JzwwhNiQYn9vXoevNjpMUh5dkEGn3sfb_FjHRB3uWFO1sqTG9KM7Q?width=1280&height=720&cropmode=none)
 
 
-###Posting messages to Slack from a public web page
+### Posting messages to Slack from a public web page
 
 This part of the project was implemented using  **[Incoming WebHooks](https://api.slack.com/incoming-webhooks)**
 
@@ -39,7 +39,7 @@ When the message starts with `/command-name`, a post is created to a `URL` that 
 
 
 
-###Implementation
+### Implementation
 
 Both scenarios are implemented inside a WebApi controller, `SlackController` with two methods: `PostMessageToSlack` and `PostMessageToWeb`.
 
@@ -63,7 +63,7 @@ The `PostMessage`method from `SlackClient` basically does an HTTP Post to the `U
 
 The `SlackMessageStore` has the message store functionality that stores the messages in an Azure SQL Database.
 
-###Building the project
+### Building the project
 
 In order to build the project, you need to add two `.config` files in the root of the API project:
 
@@ -90,7 +90,7 @@ If you don't need it, you can exclude the message store and the SQL Database, bu
                 .InstancePerRequest();`
 
 
-###Next steps
+### Next steps
 
 - create a decent UI for the public web page
 
@@ -98,6 +98,6 @@ If you don't need it, you can exclude the message store and the SQL Database, bu
 
 - add support for attachments in messages
 
-###Conclusion
+### Conclusion
 
 This repo can be used for integrating Slack with any service that has a REST or .NET API, since it implements both Slash Commands and Incoming WebHooks.
