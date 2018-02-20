@@ -31,7 +31,7 @@ We [set up a new Incoming WebHook](https://my.slack.com/services/new/incoming-we
 
 The message post functionality is done by `SlackClient.cs` , with `SlackMessage` as message model.
 
-###Posting messages from Slack to the public web page
+### Posting messages from Slack to the public web page
 
 This part was implemented using  **[Slash Commands](https://api.slack.com/slash-commands)**.
 
