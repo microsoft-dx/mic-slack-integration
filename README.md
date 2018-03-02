@@ -20,7 +20,7 @@ We broke down the project in two parts:
 - posting messages from Slack to the public web page
 
 
-![mic-slack-integration-architecture](https://kmnhpa.bn.files.1drv.com/y4mN0IuCjJuF_jGvI6HJdQYneb8N34UfGjvfY-x0Frw1gPg3ho70Gl1iNxb_K5bOFQiqQ7ZidJak2TXuXh7vUR1PfmAX-UgDd21ylcrC2-sQVr15QL1UJa-ZBUzaCjohm-nFj6tPIlDZ3kR_cEOT5R426AW5_6pKrh4_JzwwhNiQYn9vXoevNjpMUh5dkEGn3sfb_FjHRB3uWFO1sqTG9KM7Q?width=1280&height=720&cropmode=none)
+[![mic-slack-integration-architecture](https://github.com/microsoft-dx/mic-slack-integration/blob/master/images/01.jpg?raw=true)](https://github.com/microsoft-dx/mic-slack-integration/tree/master/images/01.jpg)
 
 
 ### Posting messages to Slack from a public web page
